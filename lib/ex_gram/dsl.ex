@@ -12,7 +12,8 @@ defmodule ExGram.Dsl do
     AnswerInlineQuery,
     EditInline,
     EditMarkup,
-    DeleteMessage
+    DeleteMessage,
+    SendPoll
   }
 
   def answer(cnt, text, ops \\ [])
@@ -25,6 +26,11 @@ defmodule ExGram.Dsl do
 
   def answer(cnt, m, text, ops) do
     Answer |> Responses.new(%{text: text, ops: ops}) |> Responses.set_msg(m) |> add_answer(cnt)
+  end
+
+
+  def send_poll(cnt,m,ques,options,ops) do
+    SendPoll |> Responses.new(%{id: })
   end
 
   def answer_callback(cnt, msg, ops \\ []) do
