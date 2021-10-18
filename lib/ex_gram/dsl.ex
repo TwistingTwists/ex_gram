@@ -29,8 +29,11 @@ defmodule ExGram.Dsl do
   end
 
 
-  def send_poll(cnt,m,ques,options,ops) do
-    SendPoll |> Responses.new(%{id: })
+  def send_poll(cnt, question, options, ops \\ [])
+
+  # defstruct [:id, :question, :options, :ops]
+  def send_poll(cnt,ques,options,ops) do
+    SendPoll |> Responses.new(%{question: ques , options: options, ops: ops}) |> add_answer(cnt)
   end
 
   def answer_callback(cnt, msg, ops \\ []) do

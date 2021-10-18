@@ -6,11 +6,11 @@ defmodule ExGram.Responses.Answer do
   defstruct [:id, :text, :ops]
 end
 
+
+
 defimpl ExGram.Responses, for: ExGram.Responses.Answer do
   def new(response, params), do: struct(response, params)
 
-  @spec execute(%ExGram.Responses.Answer{}) ::
-          {:error, ExGram.Error.t()} | {:ok, ExGram.Model.Message.t()}
   def execute(answer) do
     ExGram.send_message(answer.id, answer.text, answer.ops)
   end
