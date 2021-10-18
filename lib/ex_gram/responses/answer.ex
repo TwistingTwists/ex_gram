@@ -6,6 +6,8 @@ defmodule ExGram.Responses.Answer do
   defstruct [:id, :text, :ops]
 end
 
+
+
 defimpl ExGram.Responses, for: ExGram.Responses.Answer do
   def new(response, params), do: struct(response, params)
 
